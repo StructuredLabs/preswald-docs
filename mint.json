@@ -3,49 +3,48 @@
   "name": "Starter Kit",
   "logo": {
     "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
+    "primary": "#3b82f6",
+    "light": "#3b82f6",
+    "dark": "#3b82f6"
+  },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Website",
+      "url": "https://preswald.com"
+    },
+    {
+      "name": "Copilot",
+      "url": "https://marketplace.visualstudio.com/items?itemName=preswald.preswald"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "type": "github",
+    "url": "https://github.com/StructuredLabs/preswald"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "SDK Reference",
+      "url": "sdk-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
+ "anchors": [
     {
       "name": "Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://join.slack.com/t/structured-users/shared_invite/zt-265ong01f-UHP6BP3FzvOmMQDIKty_JQ"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://structuredlabs.substack.com/"
     }
   ],
   "navigation": [
@@ -58,34 +57,33 @@
       ]
     },
     {
-      "group": "Essentials",
+      "group": "SDK Documentation",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
+        "sdk-reference/introduction"
       ]
     },
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "sdk-reference/endpoint/list-pipelines",
+        "sdk-reference/endpoint/create-pipeline",
+        "sdk-reference/endpoint/get-pipeline-details",
+        "sdk-reference/endpoint/delete-pipeline",
+        "sdk-reference/endpoint/list-models",
+        "sdk-reference/endpoint/get-model-details"
       ]
     }
   ],
+   "feedback": {
+    "thumbsRating":true,
+    "suggestEdit":true,
+    "raiseIssue": true
+  },
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "linkedin": "https://www.linkedin.com/company/structuredlabs/",
+    "twitter": "https://twitter.com/StructuredLabs",
+    "website": "https://www.structuredlabs.com",
+    "slack": "https://structured-users.slack.com/",
+    "github": "https://github.com/StructuredLabs"
   }
 }

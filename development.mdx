@@ -1,106 +1,108 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: "Development"
+description: "Set up and preview your Preswald data app locally"
 ---
 
 <Info>
-  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding.
+  **Prerequisite**: Please install Python (version 3.7 or higher) and pip before
+  proceeding.
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system:
+Follow these steps to install and run Preswald on your operating system:
 
-**Step 1**: Install Mintlify:
+**Step 1**: Install Preswald:
 
 <CodeGroup>
 
-  ```bash npm
-  npm i -g mintlify
-  ```
+```bash pip
+pip install preswald
+```
 
-```bash yarn
-yarn global add mintlify
+```bash pip
+python -m pip install preswald
 ```
 
 </CodeGroup>
 
-**Step 2**: Navigate to the docs directory (where the `mint.json` file is located) and execute the following command:
+**Step 2**: Navigate to your project directory (where your `preswald.config.json` file is located) and execute the following command:
 
 ```bash
-mintlify dev
+preswald run
 ```
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+Your data app and dashboards will be available for preview at `http://localhost:8000`.
 
 ### Custom Ports
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. To run Mintlify on port 3333, for instance, use this command:
+By default, Preswald uses port 8000. You can customize the port by using the `--port` flag. For example, to run Preswald on port 8080, use this command:
 
 ```bash
-mintlify dev --port 3333
+preswald run --port 8080
 ```
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+If the specified port is already in use, Preswald will automatically use the next available port:
 
 ```md
-Port 3000 is already in use. Trying 3001 instead.
+Port 8000 is already in use. Trying 8001 instead.
 ```
 
-## Mintlify Versions
+## Preswald Versions
 
-Please note that each CLI release is associated with a specific version of Mintlify. If your local website doesn't align with the production version, please update the CLI:
+Please ensure your CLI version matches the latest Preswald SDK version. If your local app doesn't align with production, update the SDK by running:
 
 <CodeGroup>
 
-```bash npm
-npm i -g mintlify@latest
+```bash pip
+pip install --upgrade preswald
 ```
 
-```bash yarn
-yarn global upgrade mintlify
+```bash pip
+python -m pip install --upgrade preswald
 ```
 
 </CodeGroup>
 
-## Validating Links
+## Validating Configuration
 
-The CLI can assist with validating reference links made in your documentation. To identify any broken links, use the following command:
+The CLI can assist with validating your project configuration. To check for any configuration issues, use the following command:
 
 ```bash
-mintlify broken-links
+preswald validate
 ```
 
 ## Deployment
 
 <Tip>
-  Unlimited editors available under the [Pro
-  Plan](https://mintlify.com/pricing) and above.
+  Preswald provides seamless deployment to Vercel for quick and easy sharing of
+  your data apps.
 </Tip>
 
-If the deployment is successful, you should see the following:
+To deploy your app, use the following command:
+
+```bash
+preswald deploy
+```
+
+If the deployment is successful, you will see a confirmation message with a live preview link:
 
 <Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
+  <img src="/images/preswald-install.png" style={{ borderRadius: "0.5rem" }} />
 </Frame>
-
-## Code Formatting
-
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
+  <Accordion title='Error: Could not find "preswald.config.json"'>
 
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of mintlify: `npm remove -g mintlify`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall mintlify: `npm install -g mintlify`
+    Make sure you're running the command in the correct project directory where the `preswald.config.json` file is located.
+
   </Accordion>
 
   <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the \~/.mintlify folder. Afterwards, run `mintlify dev` again.
+
+    Solution: Delete the `.preswald` folder located in your home directory. Then reinitialize your project and run `preswald run` again.
+
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in the CLI version? [Check out the CLI changelog.](https://www.npmjs.com/package/mintlify?activeTab=versions)
+Curious about recent updates? [Check out the Preswald SDK changelog.](https://github.com/preswald/preswald/releases)

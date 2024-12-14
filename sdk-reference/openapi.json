@@ -1,0 +1,268 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Preswald SDK API",
+    "description": "API for managing data pipelines, transformations, models, and visualizations in the Preswald SDK.",
+    "version": "1.0.0",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Local development server"
+    },
+    {
+      "url": "https://api.preswald.com",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/pipelines": {
+      "get": {
+        "summary": "List all pipelines",
+        "description": "Fetches a list of all pipelines available in the system.",
+        "responses": {
+          "200": {
+            "description": "A list of pipelines.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pipeline"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access."
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new pipeline",
+        "description": "Creates a new pipeline for data ingestion, transformation, and visualization.",
+        "requestBody": {
+          "description": "Pipeline definition.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPipeline"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pipeline created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid pipeline configuration."
+          }
+        }
+      }
+    },
+    "/pipelines/{id}": {
+      "get": {
+        "summary": "Get pipeline details",
+        "description": "Fetches details of a specific pipeline.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the pipeline to fetch.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pipeline details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pipeline not found."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a pipeline",
+        "description": "Deletes a specific pipeline by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the pipeline to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Pipeline deleted successfully."
+          },
+          "404": {
+            "description": "Pipeline not found."
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "List all models",
+        "description": "Fetches a list of all data models defined in the system.",
+        "responses": {
+          "200": {
+            "description": "A list of models.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Model"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models/{id}": {
+      "get": {
+        "summary": "Get model details",
+        "description": "Fetches details of a specific data model.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the model to fetch.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Model not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pipeline": {
+        "type": "object",
+        "required": ["id", "name", "status", "created_at"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the pipeline."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the pipeline."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the pipeline (e.g., active, inactive)."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the pipeline was created."
+          }
+        }
+      },
+      "NewPipeline": {
+        "type": "object",
+        "required": ["name", "steps"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the new pipeline."
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Step type (e.g., ingestion, transformation, visualization)."
+                },
+                "config": {
+                  "type": "object",
+                  "description": "Configuration details for the step."
+                }
+              }
+            }
+          }
+        }
+      },
+      "Model": {
+        "type": "object",
+        "required": ["id", "name", "schema"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the model."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the data model."
+          },
+          "schema": {
+            "type": "object",
+            "description": "Schema definition of the model."
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

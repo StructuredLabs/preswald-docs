@@ -1,0 +1,150 @@
+---
+title: "CLI Reference"
+description: "Introduction to Preswald SDK CLI commands"
+---
+
+<Note>
+  If you’re looking for detailed CLI documentation, you’re in the right place!
+  The Preswald CLI provides commands to manage, execute, and deploy your data
+  apps efficiently.
+</Note>
+
+## Welcome
+
+The Preswald CLI is a powerful tool designed to streamline the development, execution, and deployment of data workflows. It simplifies operations like pipeline execution, API generation, and deployment with a few commands. Below, you’ll find a quick reference to the core CLI commands.
+
+<Card
+  title="Preswald CLI Documentation"
+  icon="terminal"
+  href="https://github.com/your-org/preswald-sdk#cli-reference"
+>
+  Explore the full CLI documentation
+</Card>
+
+## Authentication
+
+Preswald CLI commands requiring access to external services use an environment-based configuration. Set your credentials in an `.env` file or export them as environment variables.
+
+```bash
+export PRESWALD_API_KEY=your_api_key
+export PRESWALD_DB_CONNECTION=your_database_connection_string
+```
+
+## CLI Commands Overview
+
+Here’s an overview of the key CLI commands available in the Preswald SDK.
+
+### `preswald init`
+
+Initialize a new project with a predefined structure.
+
+```bash
+preswald init <project_name>
+```
+
+This creates a folder structure for ingestion, transformation, and visualization scripts. Example:
+
+```bash
+preswald init sales_analytics
+```
+
+Output:
+
+```
+Created project 'sales_analytics' with default folder structure.
+```
+
+### `preswald run`
+
+Run the Preswald development server to preview your app and pipelines locally.
+
+```bash
+preswald run [--port <port_number>]
+```
+
+Example:
+
+```bash
+preswald run --port 8080
+```
+
+This starts a local server at `http://localhost:8080` to preview your pipelines and dashboards.
+
+### `preswald pipeline run`
+
+Execute a specific pipeline from your project.
+
+```bash
+preswald pipeline run <pipeline_name>
+```
+
+Example:
+
+```bash
+preswald pipeline run load_sales_data
+```
+
+Output:
+
+```
+Pipeline 'load_sales_data' executed successfully.
+Rows processed: 10,234
+Duration: 3.2 seconds
+```
+
+### `preswald api generate`
+
+Generate an API endpoint from a data model.
+
+```bash
+preswald api generate <model_name>
+```
+
+Example:
+
+```bash
+preswald api generate sales_summary
+```
+
+Output:
+
+```
+API endpoint generated:
+GET /api/sales_summary
+```
+
+### `preswald deploy`
+
+Deploy your app to Vercel or a configured hosting platform.
+
+```bash
+preswald deploy
+```
+
+This command automatically sets up deployment, generates a live preview link, and secures environment variables.
+
+Output:
+
+```
+Deployment successful!
+Live preview: https://sales-analytics.vercel.app
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Error: Could not find 'preswald.config.json'">
+
+    Ensure you’re running the command in the root directory of your project where the `preswald.config.json` file is located.
+
+  </Accordion>
+
+  <Accordion title="Issue: Pipeline execution fails with a database connection error">
+
+    Verify that your database credentials are correctly set in the `.env` file or as environment variables. Example:
+    ```bash
+    export PRESWALD_DB_CONNECTION=postgresql://user:password@localhost:5432/db
+    ```
+
+  </Accordion>
+</AccordionGroup>
