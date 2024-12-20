@@ -65,12 +65,11 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "sdk-reference/endpoint/list-pipelines",
-        "sdk-reference/endpoint/create-pipeline",
-        "sdk-reference/endpoint/get-pipeline-details",
-        "sdk-reference/endpoint/delete-pipeline",
-        "sdk-reference/endpoint/list-models",
-        "sdk-reference/endpoint/get-model-details"
+       "sdk-reference/endpoint/text",
+       "sdk-reference/endpoint/connect",
+       "sdk-reference/endpoint/view",
+       "sdk-reference/endpoint/components",
+       "sdk-reference/endpoint/plotly"
       ]
     }
   ],

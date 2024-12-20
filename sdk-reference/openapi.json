@@ -2,152 +2,83 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Preswald SDK API",
-    "description": "API for managing data pipelines, transformations, models, and visualizations in the Preswald SDK.",
+    "description": "API specification for the Preswald SDK, detailing core functions like Markdown rendering, data connections, interactive components, and data visualization.",
     "version": "1.0.0",
     "license": {
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "servers": [
-    {
-      "url": "http://localhost:8000",
-      "description": "Local development server"
-    },
-    {
-      "url": "https://api.preswald.com",
-      "description": "Production server"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
-    "/pipelines": {
-      "get": {
-        "summary": "List all pipelines",
-        "description": "Fetches a list of all pipelines available in the system.",
-        "responses": {
-          "200": {
-            "description": "A list of pipelines.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pipeline"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized access."
-          }
-        }
-      },
+    "/text": {
       "post": {
-        "summary": "Create a new pipeline",
-        "description": "Creates a new pipeline for data ingestion, transformation, and visualization.",
+        "summary": "Render Markdown",
+        "description": "Parses and renders Markdown content into HTML.",
         "requestBody": {
-          "description": "Pipeline definition.",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPipeline"
+                "type": "object",
+                "properties": {
+                  "markdown": {
+                    "type": "string",
+                    "description": "The Markdown string to render."
+                  }
+                },
+                "required": ["markdown"]
               }
             }
           }
         },
         "responses": {
-          "201": {
-            "description": "Pipeline created successfully.",
+          "200": {
+            "description": "Rendered HTML content.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Pipeline"
+                  "type": "string",
+                  "example": "<h1>Welcome to Preswald</h1>"
                 }
               }
             }
-          },
-          "400": {
-            "description": "Invalid pipeline configuration."
           }
         }
       }
     },
-    "/pipelines/{id}": {
-      "get": {
-        "summary": "Get pipeline details",
-        "description": "Fetches details of a specific pipeline.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the pipeline to fetch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Pipeline details.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pipeline"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Pipeline not found."
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete a pipeline",
-        "description": "Deletes a specific pipeline by ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the pipeline to delete.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Pipeline deleted successfully."
-          },
-          "404": {
-            "description": "Pipeline not found."
-          }
-        }
-      }
-    },
-    "/models": {
-      "get": {
-        "summary": "List all models",
-        "description": "Fetches a list of all data models defined in the system.",
-        "responses": {
-          "200": {
-            "description": "A list of models.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Model"
+    "/connect": {
+      "post": {
+        "summary": "Connect to Data",
+        "description": "Creates a connection to a data source such as CSV, JSON, Parquet, or a database.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "description": "Path to the data file or database connection string."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Optional name for the connection."
                   }
+                },
+                "required": ["source"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Connection created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "connection_name"
                 }
               }
             }
@@ -155,34 +86,118 @@
         }
       }
     },
-    "/models/{id}": {
-      "get": {
-        "summary": "Get model details",
-        "description": "Fetches details of a specific data model.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of the model to fetch.",
-            "required": true,
-            "schema": {
-              "type": "string"
+    "/view": {
+      "post": {
+        "summary": "Render Data View",
+        "description": "Renders an interactive table for the specified data connection.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "connection_name": {
+                    "type": "string",
+                    "description": "Name of the data connection."
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of rows to display."
+                  }
+                },
+                "required": ["connection_name"]
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
-            "description": "Model details.",
+            "description": "Rendered interactive table.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Model"
+                  "type": "string",
+                  "example": "<table><tr><th>Name</th><th>Age</th></tr></table>"
                 }
               }
             }
-          },
-          "404": {
-            "description": "Model not found."
+          }
+        }
+      }
+    },
+    "/components": {
+      "post": {
+        "summary": "Create UI Component",
+        "description": "Creates a specified UI component.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "Type of component (e.g., TextInput, Slider, Checkbox)."
+                  },
+                  "props": {
+                    "type": "object",
+                    "description": "Properties for the component."
+                  }
+                },
+                "required": ["type", "props"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "HTML string of the created component.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "<input type='text' placeholder='Enter your name'>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/plotly": {
+      "post": {
+        "summary": "Render Plotly Visualization",
+        "description": "Renders a Plotly visualization.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plot_data": {
+                    "type": "object",
+                    "description": "Plotly data and configuration."
+                  }
+                },
+                "required": ["plot_data"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rendered Plotly visualization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "<div>Plotly Visualization HTML</div>"
+                }
+              }
+            }
           }
         }
       }
@@ -190,78 +205,43 @@
   },
   "components": {
     "schemas": {
-      "Pipeline": {
+      "MarkdownRequest": {
         "type": "object",
-        "required": ["id", "name", "status", "created_at"],
         "properties": {
-          "id": {
+          "markdown": {
             "type": "string",
-            "description": "Unique identifier for the pipeline."
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the pipeline."
-          },
-          "status": {
-            "type": "string",
-            "description": "Current status of the pipeline (e.g., active, inactive)."
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the pipeline was created."
+            "description": "Markdown string to render."
           }
-        }
+        },
+        "required": ["markdown"]
       },
-      "NewPipeline": {
+      "ConnectionRequest": {
         "type": "object",
-        "required": ["name", "steps"],
         "properties": {
+          "source": {
+            "type": "string",
+            "description": "Path or connection string."
+          },
           "name": {
             "type": "string",
-            "description": "Name of the new pipeline."
-          },
-          "steps": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "description": "Step type (e.g., ingestion, transformation, visualization)."
-                },
-                "config": {
-                  "type": "object",
-                  "description": "Configuration details for the step."
-                }
-              }
-            }
+            "description": "Optional connection name."
           }
-        }
+        },
+        "required": ["source"]
       },
-      "Model": {
+      "ComponentRequest": {
         "type": "object",
-        "required": ["id", "name", "schema"],
         "properties": {
-          "id": {
+          "type": {
             "type": "string",
-            "description": "Unique identifier for the model."
+            "description": "Type of component."
           },
-          "name": {
-            "type": "string",
-            "description": "Name of the data model."
-          },
-          "schema": {
+          "props": {
             "type": "object",
-            "description": "Schema definition of the model."
+            "description": "Component properties."
           }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+        },
+        "required": ["type", "props"]
       }
     }
   }

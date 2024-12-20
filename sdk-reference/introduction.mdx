@@ -4,9 +4,10 @@ description: "Introduction to Preswald SDK CLI commands"
 ---
 
 <Note>
-  If you’re looking for detailed CLI documentation, you’re in the right place!
-  The Preswald CLI provides commands to manage, execute, and deploy your data
-  apps efficiently.
+  The Preswald SDK is a lightweight Python library for building interactive data
+  applications. It streamlines app creation, data visualization, and integration
+  with components designed for simplicity and flexibility. Below, you’ll find a
+  step-by-step guide to getting started.
 </Note>
 
 ## Welcome
@@ -14,25 +15,30 @@ description: "Introduction to Preswald SDK CLI commands"
 The Preswald CLI is a powerful tool designed to streamline the development, execution, and deployment of data workflows. It simplifies operations like pipeline execution, API generation, and deployment with a few commands. Below, you’ll find a quick reference to the core CLI commands.
 
 <Card
-  title="Preswald CLI Documentation"
+  title="Learn more about Preswald"
   icon="terminal"
-  href="https://github.com/your-org/preswald-sdk#cli-reference"
+  href="https://preswald.com"
 >
-  Explore the full CLI documentation
+  Get to know Preswald
 </Card>
-
-## Authentication
-
-Preswald CLI commands requiring access to external services use an environment-based configuration. Set your credentials in an `.env` file or export them as environment variables.
-
-```bash
-export PRESWALD_API_KEY=your_api_key
-export PRESWALD_DB_CONNECTION=your_database_connection_string
-```
 
 ## CLI Commands Overview
 
 Here’s an overview of the key CLI commands available in the Preswald SDK.
+
+### Installation
+
+First, install the Preswald SDK using pip:
+
+```bash
+pip install preswald
+```
+
+Once installed, verify the installation by running:
+
+```bash
+python -c "import preswald; print('Preswald installed successfully!')"
+```
 
 ### `preswald init`
 
@@ -45,18 +51,55 @@ preswald init <project_name>
 This creates a folder structure for ingestion, transformation, and visualization scripts. Example:
 
 ```bash
-preswald init sales_analytics
+preswald init my_first_app
 ```
 
 Output:
 
 ```
-Created project 'sales_analytics' with default folder structure.
+my_first_app/
+├── hello.py          # Example app file
+├── config.toml       # Theme and app settings
+├── secrets.toml      # API keys and sensitive information
+├── .gitignore        # Preconfigured for secrets.toml
+├── README.md         # Project documentation
 ```
+
+---
+
+### Write Your First App
+
+Open the `hello.py` file in your new project and modify it as follows:
+
+```
+from preswald import text
+
+# Add Markdown text
+
+text("# Hello, Preswald!")
+text("This is your first interactive data app.")
+```
+
+#### Connect to Data
+
+Use the `connect` function to load data from a CSV file, JSON, or a database:
+
+```
+from preswald import text, connect, view
+
+# Connect to a CSV file
+connection = connect("data.csv", "my_data")
+
+# Render the data as a table
+text("### Data Preview")
+view(connection)
+```
+
+---
 
 ### `preswald run`
 
-Run the Preswald development server to preview your app and pipelines locally.
+Start the development server to preview your app:
 
 ```bash
 preswald run [--port <port_number>]
@@ -68,49 +111,10 @@ Example:
 preswald run --port 8080
 ```
 
-This starts a local server at `http://localhost:8080` to preview your pipelines and dashboards.
-
-### `preswald pipeline run`
-
-Execute a specific pipeline from your project.
-
-```bash
-preswald pipeline run <pipeline_name>
-```
-
-Example:
-
-```bash
-preswald pipeline run load_sales_data
-```
-
-Output:
+By default, your app will run at `http://localhost:8501`. Open this URL in your browser to see your app in action!
 
 ```
-Pipeline 'load_sales_data' executed successfully.
-Rows processed: 10,234
-Duration: 3.2 seconds
-```
-
-### `preswald api generate`
-
-Generate an API endpoint from a data model.
-
-```bash
-preswald api generate <model_name>
-```
-
-Example:
-
-```bash
-preswald api generate sales_summary
-```
-
-Output:
-
-```
-API endpoint generated:
-GET /api/sales_summary
+🌐 App running at: http://localhost:8501
 ```
 
 ### `preswald deploy`
