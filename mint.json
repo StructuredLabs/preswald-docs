@@ -29,12 +29,6 @@
     "type": "github",
     "url": "https://github.com/StructuredLabs/preswald"
   },
-  "tabs": [
-    {
-      "name": "SDK Reference",
-      "url": "sdk-reference"
-    }
-  ],
  "anchors": [
     {
       "name": "Community",
