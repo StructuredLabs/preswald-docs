@@ -1,17 +1,57 @@
 ---
 title: "Slider"
+icon: "sliders"
 description: ""
 ---
 
-slider(label: str, min_val: int, max_val: int, step: int, default: int)
-Adds a slider to the app for user input.
-Parameters:
-label (str): Label for the slider.
-min_val (int): Minimum value of the slider.
-max_val (int): Maximum value of the slider.
-step (int): Step size.
-default (int): Default value of the slider.
-Example:
+# `slider(label: str, min_val: int, max_val: int, step: int, default: int)`
+
+The `slider` function adds an interactive slider to your app, enabling users to input numerical values within a specified range. This is especially useful for dynamic controls, such as selecting a range or adjusting parameters.
+
+## Parameters
+
+- **`label`** _(str)_: The label displayed next to the slider, indicating its purpose.
+- **`min_val`** _(int)_: The minimum value the slider can take.
+- **`max_val`** _(int)_: The maximum value the slider can take.
+- **`step`** _(int)_: The step size between values on the slider.
+- **`default`** _(int)_: The initial/default value of the slider.
+
+## Usage Example
+
+Here’s an example of how to add a slider to your app:
+
+```python
 from preswald import slider
 
-value = slider("Rows to Display", min_val=1, max_val=100, step=10, default=20)
+# Create a slider for selecting the number of rows to display
+value = slider(
+    label="Rows to Display",
+    min_val=1,
+    max_val=100,
+    step=10,
+    default=20
+)
+
+# Use the selected value
+print(f"Slider selected value: {value}")
+```
+
+### Key Features
+
+1. **Customizable Range**: Define the range of values with `min_val` and `max_val`.
+2. **Adjustable Precision**: Control increments using the `step` parameter.
+3. **Default Selection**: Set a sensible starting point with the `default` parameter.
+4. **Real-Time Input**: Values update dynamically as the user interacts with the slider.
+
+### Example Use Case
+
+Suppose you’re building an app to display data:
+
+- The user can use a slider to choose how many rows to display in a table.
+- The slider ensures input stays within a valid range, avoiding errors.
+
+### Why Use `slider`?
+
+Sliders provide an intuitive way to capture numerical input, enhancing user experience by making the interface interactive and responsive.
+
+Simplify user input with the `slider`! 🛠️

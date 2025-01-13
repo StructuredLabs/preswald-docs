@@ -1,5 +1,6 @@
 ---
 title: "Quickstart"
+icon: "bolt"
 description: "Get up and running with the Preswald SDK in under 5 minutes"
 ---
 
@@ -39,7 +40,9 @@ This will create a scaffolded project with the following:
 - **`secrets.toml`**: A secure place for sensitive data.
 - **`.gitignore`**: Pre-configured to exclude sensitive files from version control.
 
-#### Write Your First App
+---
+
+## Step 3: Write Your First App
 
 Open `hello.py` and edit it with the following content:
 
@@ -61,7 +64,7 @@ Open your browser and navigate to **[http://localhost:8501](http://localhost:850
 
 ---
 
-## Step 3: Deploy Your App
+## Step 4: Deploy Your App
 
 When you're ready to deploy your app, Preswald gives you flexibility:
 
@@ -90,25 +93,3 @@ Deploy with the following command:
 ```bash
 preswald deploy --target gcp hello.py
 ```
-
-You can also specify other cloud providers like AWS, or keep the default configuration for local execution.
-
-### Example Deployment Commands
-
-- **Google Cloud Run**:
-
-  ```bash
-  preswald deploy --target gcp hello.py
-  ```
-
-- **Local Container (Dry Run)**:
-
-  ```bash
-  preswald deploy --target local hello.py
-  ```
-
-Preswald handles everything, from configuration to execution, giving you a shareable live preview link.
-
----
-
-That’s all you need to get started. Dive into the docs for more advanced features, or jump straight into building something amazing!

@@ -1,26 +1,91 @@
 ---
 title: "preswald deploy"
-description: ""
+icon: "code"
+description: "Deploy your app to a cloud environment or a local container."
 ---
 
-Deploys your app to a Google Cloud Run environment.
-Arguments:
-file_name (str): Path to the Python script for your app.
-Options:
---target: “cloud-run”. Please note that you need to have GCloud cli installed for this to work (CLI will error out and give you context on how to do this)
-Options:
-gcp
-aws
-Local (default)
-Optional if you want to put it on the cloud
-Example:
-To deploy to GCP cloud run:
+# `preswald deploy <file_name>`
+
+The `preswald deploy` command deploys your application to a desired environment, such as Google Cloud Run, AWS, or a local container. It streamlines the deployment process, handling configuration and execution seamlessly.
+
+## Arguments
+
+- **`file_name` (str):**  
+  The path to the Python script that contains your application code. This is the script to be deployed.
+
+## Options
+
+- **`--target`**: Specifies the deployment target. Options include:
+  - `cloud-run`: Deploys to Google Cloud Run. Requires GCloud CLI installed.
+  - `gcp`: Alias for deploying to Google Cloud.
+  - `aws`: Deploys to AWS (additional configurations required).
+  - `local` (default): Builds and runs a container locally without deploying to the cloud.
+
+---
+
+## Requirements for Cloud Deployment
+
+- **Google Cloud Run Deployment:**  
+  Ensure that the [GCloud CLI](https://cloud.google.com/sdk/docs/install) is installed and configured on your system. If not, the CLI will provide guidance on setup.
+
+---
+
+## Example Deployment Commands
+
+### 1. **Google Cloud Run Deployment**
+
+To deploy your app to Google Cloud Run:
+
+```bash
 preswald deploy --target cloud-run hello.py
+```
 
-To dry run (get a container built locally)
+This command packages your app into a container and deploys it to Google Cloud Run, providing a shareable live preview link.
 
+---
+
+### 2. **AWS Deployment** (Coming soon!)
+
+To deploy your app to AWS:
+
+```bash
+preswald deploy --target aws hello.py
+```
+
+Ensure AWS CLI is installed and configured before running this command.
+
+---
+
+### 3. **Local Deployment (Dry Run)**
+
+To build and test your app locally without deploying it to the cloud:
+
+```bash
 preswald deploy --target local hello.py
+```
 
-Or
+This creates a container locally for testing purposes.
 
-Preswald deploy hello.py
+---
+
+### 4. **Default Deployment**
+
+If no `--target` is specified, the deployment defaults to local execution:
+
+```bash
+preswald deploy hello.py
+```
+
+This builds and runs your app in a local container.
+
+---
+
+## What Preswald Handles
+
+- **Cloud Deployment:** Automates the process of containerizing your app, configuring the environment, and deploying it to the target platform.
+- **Local Testing:** Builds a container locally to let you verify your app before cloud deployment.
+- **Live Preview:** Provides a shareable URL (for cloud deployments) so others can interact with your app.
+
+---
+
+With `preswald deploy`, you can transition from local testing to cloud deployment in a few simple steps, making your app accessible to a broader audience.

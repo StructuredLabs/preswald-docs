@@ -47,6 +47,11 @@
       "url": "https://structuredlabs.substack.com/"
     },
     {
+      "name": "Interactive Demo",
+      "icon": "laptop",
+      "url": "https://demo.preswald.com"
+    },
+    {
       "name": "PyPI",
       "icon": "code",
       "url": "https://pypi.org/project/preswald/"
@@ -103,11 +108,6 @@
       ]
     }
   ],
-   "feedback": {
-    "thumbsRating":true,
-    "suggestEdit":true,
-    "raiseIssue": true
-  },
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/structuredlabs/",
     "twitter": "https://twitter.com/StructuredLabs",
