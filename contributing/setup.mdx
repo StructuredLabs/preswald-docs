@@ -1,0 +1,26 @@
+---
+title: "Setup Guide"
+---
+
+Preswald thrives on community contributions! Here’s how you can help:
+
+1. Fork the repository.
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/StructuredLabs/preswald.git
+   ```
+3. For local development, with the frontend, run the following commands
+
+   ```
+   pip install -e ".[dev]"
+   python setup.py build_frontend
+   python -m build
+   pip install dist/preswald-0.xx.xx.tar.gz # replace with current version number from https://pypi.org/project/preswald/
+   ```
+
+4. Run a test app
+   ```
+   preswald run examples/earthquakes.py
+   ```
+
+For details, check out [CONTRIBUTING.md](https://github.com/StructuredLabs/preswald/blob/main/CONTRIBUTING.md).

@@ -1,0 +1,30 @@
+---
+title: "Configuration"
+description: ""
+---
+
+Configuration
+Preswald uses a config.toml file to define app settings. Below is a sample configuration:
+
+```toml
+[project]
+title = "My Preswald App"
+version = "0.1.0"
+port = 8501
+
+[branding]
+logo = "logo.png"
+favicon = "favicon.ico"
+name = "My App"
+
+[theme]
+primary_color = "#3498db"
+font = "Arial, sans-serif"
+
+[connections.postgres]
+type = "postgres"
+host = "localhost"
+port = 5432
+dbname = "example_db"
+user = "user"
+```

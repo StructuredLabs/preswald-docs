@@ -1,0 +1,15 @@
+---
+title: "Plotly"
+description: ""
+---
+
+plotly(figure)
+Embeds a Plotly chart into the app.
+Parameters:
+figure: Plotly figure object.
+Example:
+from preswald import plotly
+import plotly.express as px
+
+fig = px.scatter(x=[1, 2, 3], y=[4, 5, 6])
+plotly(fig)

@@ -1,0 +1,55 @@
+---
+title: "Workflow"
+description: ""
+---
+
+Workflow()
+Building a stateful workflow object.
+Common usage:
+Loading / cleaning data functions that don’t need to be re-run every time
+Caching of larger datasets
+Instantiation:
+Optional:
+RetryPolicy (default is provided)
+@workflow.atom()
+Function decorator in the script
+Node in the workflow that is dependent (dependencies array is passed in)
+Parameters: dependent nodes
+Optional: RetryPolicy (default is provided)
+workflow.execute()
+Executes atoms in the workflow, with selective recomputation. Intelligent caching basically allows for the rerun of the script to only execute the atoms that are affected by the interactive elements
+Args:
+recompute_atoms: Optional set of atom names to force recomputation, regardless of cache status
+Default behavior: it will maintain a cache of the atoms that have / haven’t changed/been affected, and do a selective recomputation.
+Out: results == dictionary
+Maps the function name to the results from that function
+Readonly if you want to see the intermediate results of the functions
+Example:
+from preswald import Workflow
+import pandas as pd
+
+workflow = Workflow()
+
+@workflow.atom()
+def load_data():
+
+# This atom has no dependencies
+
+return pd.read_csv("data.csv")
+
+@workflow.atom(dependencies=['load_data'])
+def clean_data(load_data):
+
+# The output from load_data is automatically passed in
+
+return load_data.dropna()
+
+@workflow.atom(dependencies=['clean_data'])
+def analyze_data(clean_data):
+
+# Access the cleaned data from the previous atom
+
+return clean_data.describe()
+
+results = workflow.execute()
+print(results)

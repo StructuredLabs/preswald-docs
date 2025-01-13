@@ -1,40 +1,114 @@
 ---
 title: "Quickstart"
-description: "Start using the Preswald SDK in under 5 minutes"
+description: "Get up and running with the Preswald SDK in under 5 minutes"
 ---
 
-## Setup your development
+## Step 1: Install the Preswald SDK
 
-Learn how to set up your environment and start creating lightweight data workflows.
+First, install the SDK from PyPI:
 
-### Install and preview
+```bash
+pip install preswald
+```
 
-<AccordionGroup>
-  <Accordion icon="terminal" title="Install Preswald SDK">
-    Get started by installing the Preswald SDK with pip. Run the following
-    command in your terminal: ```pip install preswald``` This will install all
-    the core functionalities to help you ingest, transform, and visualize data.
-  </Accordion>
-  <Accordion icon="play" title="Preview your first pipeline">
-    Use the CLI to preview and test your data pipelines locally: 1. Navigate to
-    the root of your project where your configuration file is located. 2. Run
-    this command to start the development server: ```preswald run``` This allows
-    you to preview the pipeline and dashboard in real time.
-  </Accordion>
-</AccordionGroup>
+Need the latest version? Upgrade anytime:
 
-### Deploy your workflows
+```bash
+pip install --upgrade preswald
+```
 
-<AccordionGroup>
-  <Accordion icon="server" title="Deploy with Vercel">
-    Preswald makes deployment effortless with Vercel integration. Use the CLI to
-    deploy your project: ```preswald deploy``` This will automatically configure
-    and upload your app for serverless execution. You’ll receive a live preview
-    link to share with others.
-  </Accordion>
-  <Accordion icon="upload" title="Push changes to Git">
-    Commit and push your changes to your Git repository. Use our lightweight
-    deployment process to update your app. If needed, manually trigger the
-    deployment using the CLI: ```preswald deploy```
-  </Accordion>
-</AccordionGroup>
+That’s it! You’re ready to start building.
+
+---
+
+## Step 2: Set Up Your First Project
+
+#### Initialize Your Project
+
+Run these commands to bootstrap your first Preswald app:
+
+```bash
+preswald init my_project
+cd my_project
+```
+
+This will create a scaffolded project with the following:
+
+- **`hello.py`**: A starter Python script to get you going.
+- **`config.toml`**: Your app’s configuration settings.
+- **`secrets.toml`**: A secure place for sensitive data.
+- **`.gitignore`**: Pre-configured to exclude sensitive files from version control.
+
+#### Write Your First App
+
+Open `hello.py` and edit it with the following content:
+
+```python
+from preswald import text
+
+text("# Welcome to Preswald")
+```
+
+#### Run It Locally
+
+Launch your app locally with this command:
+
+```bash
+preswald run hello.py
+```
+
+Open your browser and navigate to **[http://localhost:8501](http://localhost:8501)**. Your app will be live, ready for you to explore and iterate on.
+
+---
+
+## Step 3: Deploy Your App
+
+When you're ready to deploy your app, Preswald gives you flexibility:
+
+#### Deploy Locally
+
+If you just want to test your container locally:
+
+```bash
+preswald deploy --target local hello.py
+```
+
+Or simply:
+
+```bash
+preswald deploy hello.py
+```
+
+This performs a local "dry run" by building the container locally.
+
+#### Deploy to the Cloud
+
+To deploy your app to **Google Cloud Run**, ensure you have the Google Cloud CLI installed. If not, the CLI will guide you through the installation process.
+
+Deploy with the following command:
+
+```bash
+preswald deploy --target gcp hello.py
+```
+
+You can also specify other cloud providers like AWS, or keep the default configuration for local execution.
+
+### Example Deployment Commands
+
+- **Google Cloud Run**:
+
+  ```bash
+  preswald deploy --target gcp hello.py
+  ```
+
+- **Local Container (Dry Run)**:
+
+  ```bash
+  preswald deploy --target local hello.py
+  ```
+
+Preswald handles everything, from configuration to execution, giving you a shareable live preview link.
+
+---
+
+That’s all you need to get started. Dive into the docs for more advanced features, or jump straight into building something amazing!

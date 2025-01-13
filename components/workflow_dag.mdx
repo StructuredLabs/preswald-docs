@@ -1,0 +1,19 @@
+---
+title: "Workflow DAG"
+description: ""
+---
+
+workflow_dag(workflow, title="Workflow Dependency Graph")
+
+Render the workflow's DAG visualization.
+
+Parameters:
+
+IN: Takes in a workflow
+IN: Takes in a title
+OUT: plotly chart
+
+from preswald import workflow_dag, Workflow
+
+workflow = Workflow()
+workflow_dag(workflow, “test”)

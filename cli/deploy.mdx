@@ -1,0 +1,26 @@
+---
+title: "preswald deploy"
+description: ""
+---
+
+Deploys your app to a Google Cloud Run environment.
+Arguments:
+file_name (str): Path to the Python script for your app.
+Options:
+--target: “cloud-run”. Please note that you need to have GCloud cli installed for this to work (CLI will error out and give you context on how to do this)
+Options:
+gcp
+aws
+Local (default)
+Optional if you want to put it on the cloud
+Example:
+To deploy to GCP cloud run:
+preswald deploy --target cloud-run hello.py
+
+To dry run (get a container built locally)
+
+preswald deploy --target local hello.py
+
+Or
+
+Preswald deploy hello.py

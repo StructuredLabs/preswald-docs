@@ -1,0 +1,26 @@
+---
+title: "Examples"
+---
+
+Hello World
+
+from preswald import text
+
+text("# Hello, World!")
+
+Data Viewer
+
+from preswald import connect, view
+
+data = connect("data.csv", "example_data")
+view(data)
+
+Interactive Dashboard
+
+from preswald import text, slider, view, connect
+
+text("# Interactive Dashboard")
+
+rows = slider("Rows to Display", min_val=5, max_val=50, default=10)
+data = connect("data.csv", "data_alias")
+view(data, limit=rows)

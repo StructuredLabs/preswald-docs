@@ -1,0 +1,59 @@
+---
+title: "Workflow Analyzer"
+description: ""
+---
+
+WorkflowAnalyzer()
+
+Parameters:
+IN: takes in a Workflow object
+
+analyzer.get_critical_path():
+IN: none
+OUT: critical_path: list of atoms, workflow bottleneck. Profiler of the execution time for all the atoms
+
+analyzer.get_parallel_groups() – shows which nodes can be computed at the same time – optimization
+analyzer.visualize() opens up a new page with a DAG showing the dependencies of the atoms
+IN:
+highlight_path: takes in a list of atoms
+Path is optional - if path is not passed in it will show the whole dag
+Title: name describing what is visualized
+OUT:
+Plotly chart
+
+from preswald import Workflow, WorkflowAnalyzer
+import random
+
+# Create a sample workflow
+
+workflow = Workflow()
+
+# Create analyzer
+
+analyzer = WorkflowAnalyzer(workflow)
+
+# Execute workflow
+
+workflow.execute()
+
+# Create and display visualization
+
+fig = analyzer.visualize()
+fig.show() # Opens in web browser
+
+# Show critical path
+
+critical_path = analyzer.get_critical_path()
+print("Critical path:", ' -> '.join(critical_path))
+fig_critical = analyzer.visualize(
+highlight_path=critical_path,
+title="Workflow Critical Path"
+)
+fig_critical.show()
+
+# Show parallel execution groups
+
+parallel_groups = analyzer.get_parallel_groups()
+print("\nParallel execution groups:")
+for i, group in enumerate(parallel_groups, 1):
+print(f"Group {i}: {', '.join(group)}")

@@ -7,9 +7,9 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#3b82f6",
-    "light": "#3b82f6",
-    "dark": "#3b82f6"
+    "primary": "#d97706",
+    "light": "#d97706",
+    "dark": "#d97706"
   },
   "modeToggle": {
     "default": "light",
@@ -21,14 +21,20 @@
       "url": "https://preswald.com"
     },
     {
-      "name": "Copilot",
-      "url": "https://marketplace.visualstudio.com/items?itemName=preswald.preswald"
+      "name": "Support",
+      "url": "mailto:amrutha@structuredlabs.com"
     }
   ],
   "topbarCtaButton": {
     "type": "github",
     "url": "https://github.com/StructuredLabs/preswald"
   },
+  "tabs": [
+    {
+      "name": "Components Reference",
+      "url": "components"
+    }
+  ],
  "anchors": [
     {
       "name": "Community",
@@ -39,6 +45,16 @@
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://structuredlabs.substack.com/"
+    },
+    {
+      "name": "PyPI",
+      "icon": "code",
+      "url": "https://pypi.org/project/preswald/"
+    },
+    {
+      "name": "Copilot",
+      "icon": "brain",
+      "url": "https://marketplace.visualstudio.com/items?itemName=preswald.preswald"
     }
   ],
   "navigation": [
@@ -47,23 +63,43 @@
       "pages": [
         "introduction",
         "quickstart",
-        "development"
+        "configuration",
+        "coreconcepts"  
       ]
     },
     {
-      "group": "SDK Documentation",
+      "group": "CLI Reference",
       "pages": [
-        "sdk-reference/introduction"
+        "cli/init",
+        "cli/run",
+        "cli/deploy"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Components Reference",
       "pages": [
-       "sdk-reference/endpoint/text",
-       "sdk-reference/endpoint/connect",
-       "sdk-reference/endpoint/view",
-       "sdk-reference/endpoint/components",
-       "sdk-reference/endpoint/plotly"
+        "components/text",
+        "components/view",
+        "components/plotly",
+        "components/slider",
+        "components/selectbox",
+        "components/workflow_dag",
+        "components/workflow",
+        "components/workflow_analyzer",
+        "components/retrypolicy"
+      ]
+    },
+    {
+      "group": "Usage",
+      "pages": [
+        "usage/examples",
+        "usage/troubleshooting"
+      ]
+    },
+    {
+      "group": "Contributing",
+      "pages": [
+        "contributing/setup"
       ]
     }
   ],
