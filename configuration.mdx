@@ -4,7 +4,7 @@ icon: "gear"
 description: "Guide to configuring Preswald apps, including settings for connections, theming, and logging."
 ---
 
-When initializing a new Preswald project with `preswald init`, a default `config.toml` file is created. This file defines core settings for the app, including logging, theming, and data connections. Data connections can include databases like PostgreSQL or local CSV files.
+When initializing a new Preswald project with `preswald init`, a default `config.toml` file is created. This file defines core settings for the app, including logging, theming, and data data. Data connections can include databases like PostgreSQL or local CSV files.
 
 ## Default Configuration (`config.toml`)
 
@@ -27,14 +27,14 @@ name = "My App"
 primary_color = "#3498db"
 font = "Arial, sans-serif"
 
-[connections.postgres]
+[data.postgres]
 type = "postgres"
 host = "localhost"
 port = 5432
 dbname = "example_db"
 user = "user"
 
-[connections.csv]
+[data.csv]
 type = "csv"
 file_path = "data/example.csv"
 delimiter = ","
@@ -70,7 +70,7 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 ## Connecting to Data Sources
 
-### PostgreSQL Example: `[connections.postgres]`
+### PostgreSQL Example: `[data.postgres]`
 
 - `type`: Use `"postgres"` for PostgreSQL.
 - `host`: Hostname or IP of the database server.
@@ -78,7 +78,7 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 - `dbname`: Name of the database.
 - `user`: Username for database access.
 
-### CSV Example: `[connections.csv]`
+### CSV Example: `[data.csv]`
 
 You can use a local CSV file as a data source by defining it in `config.toml`.
 
@@ -92,7 +92,7 @@ You can use a local CSV file as a data source by defining it in `config.toml`.
 #### Example CSV Connection:
 
 ```toml
-[connections.csv]
+[data.csv]
 type = "csv"
 file_path = "data/customers.csv"
 delimiter = ","
@@ -140,14 +140,14 @@ This configuration generates detailed logs, including timestamps, logger names, 
 You can define multiple connections in the `config.toml`. For example:
 
 ```toml
-[connections.postgres]
+[data.postgres]
 type = "postgres"
 host = "localhost"
 port = 5432
 dbname = "sales_db"
 user = "admin"
 
-[connections.csv]
+[data.csv]
 type = "csv"
 file_path = "data/sales.csv"
 delimiter = ","
