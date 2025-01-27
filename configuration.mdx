@@ -1,7 +1,7 @@
 ---
 title: "Configuration"
 icon: "gear"
-description: "Guide to configuring Preswald apps, including settings for connections, theming, and logging."
+description: "Settings for connections, theming, and logging."
 ---
 
 When initializing a new Preswald project with `preswald init`, a default `config.toml` file is created. This file defines core settings for the app, including logging, theming, and data connections. Data connections can include databases like PostgreSQL or local CSV files.
@@ -19,13 +19,10 @@ version = "0.1.0"
 port = 8501
 
 [branding]
-logo = "logo.png"
-favicon = "favicon.ico"
-name = "My App"
-
-[theme]
-primary_color = "#3498db"
-font = "Arial, sans-serif"
+name = "Preswald Project"
+logo = "images/logo.png"
+favicon = "images/favicon.ico"
+primaryColor = "#F89613"
 
 [data.postgres]
 type = "postgres"
@@ -36,7 +33,7 @@ user = "user"
 
 [data.csv]
 type = "csv"
-file_path = "data/example.csv"
+path = "data/example.csv"
 delimiter = ","
 header = true
 
@@ -57,14 +54,10 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 ### `[branding]`
 
+- `name`: Displayed name of the app.
 - `logo`: Path to the logo file (relative to the project directory).
 - `favicon`: Path to the favicon file.
-- `name`: Displayed name of the app.
-
-### `[theme]`
-
-- `primary_color`: The primary UI color, specified as a CSS-compatible color (e.g., `#3498db`).
-- `font`: Font family used in the app, e.g., `"Arial, sans-serif"`.
+- `primaryColor`: The primary UI color, specified as a CSS-compatible color (e.g., `#3498db`).
 
 ---
 
@@ -85,7 +78,7 @@ You can use a local CSV file as a data source by defining it in `config.toml`.
 #### Fields:
 
 - `type`: Use `"csv"` to specify that this connection refers to a CSV file.
-- `file_path`: Relative or absolute path to the CSV file.
+- `path`: Relative or absolute path to the CSV file.
 - `delimiter`: The character used to separate values (e.g., `,` or `;`).
 - `header`: Set to `true` if the CSV file contains a header row, otherwise `false`.
 
@@ -94,12 +87,12 @@ You can use a local CSV file as a data source by defining it in `config.toml`.
 ```toml
 [data.csv]
 type = "csv"
-file_path = "data/customers.csv"
+path = "data/customers.csv"
 delimiter = ","
 header = true
 ```
 
-If the CSV file is located in a subdirectory, ensure the `file_path` is correct relative to the root directory.
+If the CSV file is located in a subdirectory, make sure the `path` is correct relative to the root directory.
 
 ---
 
@@ -130,28 +123,3 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 ```
 
 This configuration generates detailed logs, including timestamps, logger names, and log messages.
-
----
-
-## Example Use Case
-
-### Combining PostgreSQL and CSV Connections
-
-You can define multiple connections in the `config.toml`. For example:
-
-```toml
-[data.postgres]
-type = "postgres"
-host = "localhost"
-port = 5432
-dbname = "sales_db"
-user = "admin"
-
-[data.csv]
-type = "csv"
-file_path = "data/sales.csv"
-delimiter = ","
-header = true
-```
-
-When the app runs, it can connect to both the PostgreSQL database and the CSV file, treating both as data sources.

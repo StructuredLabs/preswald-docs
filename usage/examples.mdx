@@ -1,11 +1,6 @@
 ---
 title: "Examples"
 icon: "book"
-description: "Explore practical examples to get started with Preswald."
----
-
-Below are a few examples showcasing how to use Preswald for different functionalities. For a more detailed walkthrough, visit the [Preswald Tutorial Repository](https://github.com/StructuredLabs/preswald-tutorial).
-
 ---
 
 ## **Hello World**
@@ -25,9 +20,9 @@ text("# Hello, World!")
 Connect to a CSV file and display the data using Preswald's viewer:
 
 ```python
-from preswald import connect, view
+from preswald import view
 
-data = connect("data.csv", "example_data")
+data = pd.connect("data.csv", "example_data")
 view(data)
 ```
 
@@ -38,12 +33,11 @@ view(data)
 Create an interactive dashboard where users can control how many rows of data to display:
 
 ```python
-from preswald import text, slider, view, connect
+from preswald import text, slider, view
 
 text("# Interactive Dashboard")
 
 rows = slider("Rows to Display", min_val=5, max_val=50, default=10)
-data = connect("data.csv", "data_alias")
 view(data, limit=rows)
 ```
 
@@ -51,4 +45,4 @@ view(data, limit=rows)
 
 ## Learn More
 
-To explore these examples in depth and discover additional use cases, check out the [Preswald Tutorial Repository](https://github.com/StructuredLabs/preswald-tutorial). You'll find comprehensive guides and example projects to help you make the most of Preswald.
+To explore these examples in depth and discover additional use cases, check out the [Preswald Examples](https://github.com/StructuredLabs/preswald-tutorial). You'll find comprehensive guides and example projects to help you make the most of Preswald.

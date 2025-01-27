@@ -4,9 +4,10 @@ icon: "bug"
 description: "Resolve common issues with Preswald setup, development and deployment."
 ---
 
-This guide provides solutions to common issues you may encounter while using Preswald. Follow the steps below to troubleshoot and resolve problems effectively.
-
----
+<Warning>
+  If you need support, just reach out to us and we'll help:
+  amrutha@structuredlabs.com
+</Warning>
 
 ## **Favicon or Logo Not Updating**
 
@@ -21,7 +22,7 @@ If your app's favicon or logo doesn't update in the browser, it might be due to 
 
 ## **Docker Issues**
 
-If you encounter issues related to Docker, ensure that Docker is installed and running on your system.
+If you encounter issues related to Docker, verify that Docker is installed and running on your system.
 
 ### **Verify Docker Installation**
 
@@ -37,7 +38,7 @@ If Docker is not installed or the command fails, download and install Docker fro
 
 ## **GCloud Deploy Not Working**
 
-If deploying to Google Cloud Run fails, ensure that the Google Cloud CLI (gcloud) is installed and configured correctly.
+If deploying to Google Cloud Run fails, verify that the Google Cloud CLI (gcloud) is installed and configured correctly.
 
 ### **Verify GCloud CLI Installation**
 
@@ -52,7 +53,7 @@ If it is not installed, follow the [GCloud CLI Installation Guide](https://cloud
 ### **Common GCloud CLI Issues**
 
 - **Authentication Error**: Run `gcloud auth login` to authenticate your account.
-- **Project Configuration**: Ensure you have selected the correct project using `gcloud config set project <project-id>`.
+- **Project Configuration**: Select the correct project using `gcloud config set project <project-id>`.
 
 ---
 
@@ -81,12 +82,6 @@ Dependency errors may arise if the required Python packages are not installed or
      env\Scripts\activate
      ```
 
-3. **Install Dependencies**:
-   Ensure you are in the virtual environment and run:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
 #### **Using Conda**
 
 1. **Create a Conda Environment**:
@@ -103,19 +98,6 @@ Dependency errors may arise if the required Python packages are not installed or
    conda activate myenv
    ```
 
-3. **Install Dependencies**:
-   Run the following command to install dependencies listed in your `requirements.txt`:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-   Alternatively, if you have a `conda` environment file (e.g., `environment.yml`), use:
-
-   ```bash
-   conda env update --file environment.yml
-   ```
-
 ---
 
 ## **General Debugging Tips**
@@ -125,11 +107,11 @@ Dependency errors may arise if the required Python packages are not installed or
    - Docker logs: `docker logs <container-id>`
    - GCloud logs: `gcloud app logs read`
 2. **Verify File Paths**:  
-   Ensure all file paths referenced in your script (e.g., `data.csv`) are correct and accessible.
+   Make sure all file paths referenced in your script (e.g., `data.csv`) are correct and accessible.
 
 3. **Update Software**:
 
-   - Ensure your Python version matches the project's requirements.
+   - Verify your Python version matches the project's requirements.
    - Update Preswald with the following command:
      ```bash
      pip install --upgrade preswald

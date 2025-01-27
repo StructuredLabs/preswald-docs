@@ -4,27 +4,23 @@ icon: "bolt"
 description: "Get up and running with the Preswald SDK in under 5 minutes"
 ---
 
-## Step 1: Install the Preswald SDK
+<Steps>
 
-First, install the SDK from PyPI:
+  <Step title="Install the Preswald SDK">
 
 ```bash
 pip install preswald
 ```
 
-Need the latest version? Upgrade anytime:
+<Tip>Need the latest version? Upgrade anytime:</Tip>
 
 ```bash
 pip install --upgrade preswald
 ```
 
-That’s it! You’re ready to start building.
+</Step>
 
----
-
-## Step 2: Set Up Your First Project
-
-#### Initialize Your Project
+  <Step title="Set Up Your First Project">
 
 Run these commands to bootstrap your first Preswald app:
 
@@ -40,9 +36,9 @@ This will create a scaffolded project with the following:
 - **`secrets.toml`**: A secure place for sensitive data.
 - **`.gitignore`**: Pre-configured to exclude sensitive files from version control.
 
----
+</Step>
 
-## Step 3: Write Your First App
+  <Step title="Write Your First App">
 
 Open `hello.py` and edit it with the following content:
 
@@ -62,9 +58,9 @@ preswald run hello.py
 
 Open your browser and navigate to **[http://localhost:8501](http://localhost:8501)**. Your app will be live, ready for you to explore and iterate on.
 
----
+</Step>
 
-## Step 4: Deploy Your App
+  <Step title="Deploy Your App">
 
 When you're ready to deploy your app, Preswald gives you flexibility:
 
@@ -84,12 +80,6 @@ preswald deploy hello.py
 
 This performs a local "dry run" by building the container locally.
 
-#### Deploy to the Cloud
+</Step>
 
-To deploy your app to **Google Cloud Run**, ensure you have the Google Cloud CLI installed. If not, the CLI will guide you through the installation process.
-
-Deploy with the following command:
-
-```bash
-preswald deploy --target gcp hello.py
-```
+</Steps>
