@@ -91,7 +91,14 @@
         "components/workflow_dag",
         "components/workflow",
         "components/workflow_analyzer",
-        "components/retrypolicy"
+        "components/retrypolicy",
+        "components/separator"
+      ]
+    },
+      {
+      "group": "Layout",
+      "pages": [
+        "layout/guide"
       ]
     },
     {
