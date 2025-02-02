@@ -11,7 +11,7 @@ Preswald is built to simplify the process of creating dashboards and data apps b
 ```mermaid
 graph TB
     subgraph "Preswald Architecture"
-        Config[/"config.toml\nDeclarative Design"/]
+        Config[/"preswald.toml\nDeclarative Design"/]
 
         subgraph "Data-Centric Core"
             DuckDB["DuckDB\nIn-Memory Analytics"]
@@ -54,7 +54,7 @@ graph TB
 
 ### 1️⃣ **Declarative Design**
 
-Preswald is built on the idea that describing what an application should do is more efficient than specifying how to do it. A single configuration file, `config.toml`, defines the application's behavior, presentation, and data connections.
+Preswald is built on the idea that describing what an application should do is more efficient than specifying how to do it. A single configuration file, `preswald.toml`, defines the application's behavior, presentation, and data connections.
 
 - **Clear Structure**: The configuration separates logic from setup, making it predictable and easy to follow.
 - **Portability**: Apps can be reproduced or shared with minimal effort.

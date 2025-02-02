@@ -4,13 +4,13 @@ icon: "gear"
 description: "Settings for connections, theming, and logging."
 ---
 
-When initializing a new Preswald project with `preswald init`, a default `config.toml` file is created. This file defines core settings for the app, including logging, theming, and data connections. Data connections can include databases like PostgreSQL or local CSV files.
+When initializing a new Preswald project with `preswald init`, a default `preswald.toml` file is created. This file defines core settings for the app, including logging, theming, and data connections. Data connections can include databases like PostgreSQL or local CSV files.
 
-## Default Configuration (`config.toml`)
+## Default Configuration (`preswald.toml`)
 
-The following is the default structure of `config.toml` created during initialization:
+The following is the default structure of `preswald.toml` created during initialization:
 
-### Example `config.toml`
+### Example `preswald.toml`
 
 ```toml
 [project]
@@ -73,7 +73,7 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 ### CSV Example: `[data.csv]`
 
-You can use a local CSV file as a data source by defining it in `config.toml`.
+You can use a local CSV file as a data source by defining it in `preswald.toml`.
 
 #### Fields:
 
