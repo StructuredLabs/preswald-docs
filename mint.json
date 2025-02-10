@@ -47,11 +47,6 @@
       "url": "https://structuredlabs.substack.com/"
     },
     {
-      "name": "Interactive Demo",
-      "icon": "laptop",
-      "url": "https://demo.preswald.com"
-    },
-    {
       "name": "PyPI",
       "icon": "code",
       "url": "https://pypi.org/project/preswald/"
