@@ -64,7 +64,8 @@
         "introduction",
         "quickstart",
         "configuration",
-        "coreconcepts"  
+        "coreconcepts",
+        "contributing"  
       ]
     },
     {
@@ -101,12 +102,6 @@
       "pages": [
         "usage/examples",
         "usage/troubleshooting"
-      ]
-    },
-    {
-      "group": "Contributing",
-      "pages": [
-        "contributing/setup"
       ]
     }
   ],
