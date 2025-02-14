@@ -87,7 +87,8 @@
         "components/workflow",
         "components/workflow_analyzer",
         "components/retrypolicy",
-        "components/separator"
+        "components/separator",
+        "components/matplotlib"
       ]
     },
       {
