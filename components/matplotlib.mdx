@@ -1,0 +1,108 @@
+---
+title: "Matplotlib"
+icon: "chart-line"
+description: "Create static visualizations using Matplotlib"
+---
+
+# `matplotlib(figure)`
+
+The `matplotlib` component allows you to embed Matplotlib figures into your application. It provides a familiar interface for creating static visualizations using the popular Matplotlib library.
+
+## Parameters
+
+- **`figure`** _(matplotlib.figure.Figure)_: The Matplotlib figure object to be rendered.
+- **`format`** _(str)_: _(Optional)_ The output format for the figure. Can be either 'png' or 'svg'. Defaults to 'png'.
+- **`label`** _(str)_: _(Optional)_ A label for the plot.
+
+## Output Formats
+
+### PNG Format
+PNG (Portable Network Graphics) is the default format. It's best for:
+- General-purpose plots
+- Plots with many data points
+- When file size is a concern
+- When rendering speed is important
+
+```python
+from preswald import matplotlib
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Using default PNG format
+matplotlib.plot(x, y, label='Sine Wave')  # format='png' is default
+
+# Or explicitly specify PNG
+matplotlib.plot(x, y, label='Sine Wave', format='png')
+```
+
+### SVG Format
+SVG (Scalable Vector Graphics) is best for:
+- High-quality exports
+- Plots that need to be resized without losing quality
+- Publication-ready figures
+- Plots with text that needs to remain sharp at any size
+
+```python
+from preswald import matplotlib
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Using SVG format for higher quality
+matplotlib.plot(x, y, label='Sine Wave', format='svg')
+```
+
+## Usage Example
+
+Here's a complete example showing how to create a plot:
+
+```python
+from preswald import matplotlib
+import numpy as np
+
+# Create data
+x = np.linspace(0, 10, 100)
+
+# Create a figure with multiple plots
+matplotlib.plt.figure(figsize=(10, 6))
+matplotlib.plt.plot(x, np.sin(x), label='sin(x)')
+matplotlib.plt.plot(x, np.cos(x), label='cos(x)')
+matplotlib.plt.title('Trigonometric Functions')
+matplotlib.plt.xlabel('X')
+matplotlib.plt.ylabel('Y')
+matplotlib.plt.legend()
+matplotlib.plt.grid(True)
+
+# Display the figure in SVG format for highest quality
+matplotlib(matplotlib.plt.gcf(), format='svg')
+```
+
+### Format Comparison
+
+| Feature | PNG | SVG |
+|---------|-----|-----|
+| File Size | Generally smaller | Generally larger |
+| Resolution | Fixed (raster) | Infinite (vector) |
+| Rendering Speed | Faster | Slower |
+| Quality when Zooming | Pixelates | Remains sharp |
+| Memory Usage | Lower | Higher |
+| Best For | Simple plots, many data points | Publication quality, text-heavy plots |
+
+### Tips for Best Results
+
+1. **For PNG output:**
+   - Set appropriate DPI (dots per inch) for your needs
+   - Use larger figure sizes for higher resolution
+   ```python
+   matplotlib.plt.figure(figsize=(12, 8), dpi=100)
+   ```
+
+2. **For SVG output:**
+   - Keep the number of elements (points, lines) reasonable
+   - Great for plots with text annotations
+   - Use when you need to resize the plot later
+
+Create beautiful static visualizations with the power of Matplotlib! 📊
