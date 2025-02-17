@@ -25,7 +25,8 @@ favicon = "images/favicon.ico"
 primaryColor = "#F89613"
 
 [data.csv]
-file_path = "data/example.csv"
+type = "csv"
+path = "data/example.csv"
 
 [logging]
 level = "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
@@ -53,9 +54,32 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 ## Connecting to Data Sources
 
-### PostgreSQL Example: `[data.postgres]`
+### CSV Example: `[data.sample_csv]`
 
-- `type`: Use `"postgres"` for PostgreSQL.
+You can use a local or remote CSV file as a data source by defining it in `preswald.toml`.
+
+#### Fields:
+
+- `type`: Use `"csv"`.
+- `path`: Relative or absolute path to the CSV file, or a link to one
+
+#### Example CSV Connections:
+
+```toml
+[data.csv]
+type = "csv"
+path = "data/customers.csv"
+
+[data.csv]
+type = "csv"
+path = "https://storage.googleapis.com/test/sample_data.csv"
+```
+
+If the CSV file is located in a subdirectory, make sure the `path` is correct relative to the root directory.
+
+### PostgreSQL Example: `[data.sample_postgres]`
+
+- `type`: Use `"postgres"`.
 - `host`: Hostname or IP of the database server.
 - `port`: Port number for the database (default is `5432`).
 - `dbname`: Name of the database.
@@ -63,30 +87,49 @@ format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 You should put the `password` for the postgres database in `secrets.toml` which is created via `preswald init`.
 
+#### Example Postgres connection:
+
 ```toml
-[data.postgres]
+# preswald.toml
+[data.earthquake_db]
+type = "postgres"
+host = "localhost"            # PostgreSQL host
+port = 5432                   # PostgreSQL port
+dbname = "earthquakes"        # Database name
+user = "user"                 # Username
+
+#secrets.toml
+[data.earthquake_db]
 password = ""
 ```
 
-### CSV Example: `[data.csv]`
-
-You can use a local or remote CSV file as a data source by defining it in `preswald.toml`.
+### Clickhouse Example: `[data.sample_clickhouse]`
 
 #### Fields:
 
-- `path`: Relative or absolute path to the CSV file, or a link to one
+- `type`: Use `"clickhouse"`.
+- `host`: Hostname or IP of the database server.
+- `port`: Port number for the database (default is `5432`).
+- `database`: Name of the database.
+- `user`: Username for database access.
 
-#### Example CSV Connections:
+You should put the `password` for the postgres database in `secrets.toml` which is created via `preswald init`.
+
+#### Example Clickhouse Connection:
 
 ```toml
-[data.csv]
-path = "data/customers.csv"
+# preswald.toml
+[data.eq_clickhouse]
+type = "clickhouse"
+host = "localhost"
+port = 8123
+database = "default"
+user = "default"
 
-[data.csv]
-path = "https://storage.googleapis.com/test/sample_data.csv"
+# secrets.toml
+[data.eq_clickhouse]
+password = ""
 ```
-
-If the CSV file is located in a subdirectory, make sure the `path` is correct relative to the root directory.
 
 ---
 
