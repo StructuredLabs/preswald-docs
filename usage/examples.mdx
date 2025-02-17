@@ -20,9 +20,10 @@ text("# Hello, World!")
 Connect to a CSV file and display the data using Preswald's viewer:
 
 ```python
-from preswald import view
+from preswald import connect, get_df, view
 
-data = pd.connect("data.csv", "example_data")
+connect() # reads preswald.toml
+data = get_df("example_data")
 view(data)
 ```
 
@@ -45,4 +46,4 @@ view(data, limit=rows)
 
 ## Learn More
 
-To explore these examples in depth and discover additional use cases, check out the [Preswald Examples](https://github.com/StructuredLabs/preswald-tutorial). You'll find comprehensive guides and example projects to help you make the most of Preswald.
+To explore these examples in depth and discover additional use cases, check out the [Preswald Examples](https://github.com/StructuredLabs/preswald/tree/main/examples). You'll find comprehensive guides and example projects to help you make the most of Preswald.
