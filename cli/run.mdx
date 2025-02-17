@@ -13,12 +13,30 @@ The `preswald run` command launches a local development server for your applicat
 - **`file_name` (str):**  
   The path to the Python script that contains your application code. This is the script the development server will execute.
 
+## Options
+
+- **`port` (int):**  
+  The port on which to run the Preswald server. Default is 8501
+- **`log-level` (str):**  
+  The log level for the Preswald server. Options are DEBUG, INFO, WARNING, ERROR, CRITICAL. Default is INFO
+- **`disable-new-tab` (bool):**  
+  Flag which controls whether or not a new browser window pops up to show the rendered data app. Default is false, which means that a new window will pop up.
+
+
+---
+
 ## Example Usage
 
 To launch the development server for your app:
 
 ```bash
 preswald run hello.py
+```
+
+or
+
+```bash
+preswald run hello.py --port 8504 --log-level DEBUG --disable-new-tab
 ```
 
 After running the command, your application will be available locally at:

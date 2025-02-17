@@ -35,7 +35,7 @@
       "url": "components"
     }
   ],
- "anchors": [
+  "anchors": [
     {
       "name": "Community",
       "icon": "slack",
@@ -65,15 +65,18 @@
         "quickstart",
         "configuration",
         "coreconcepts",
-        "contributing"  
+        "contributing"
       ]
     },
     {
       "group": "CLI Reference",
       "pages": [
+        "cli/tutorial",
         "cli/init",
         "cli/run",
-        "cli/deploy"
+        "cli/deploy",
+        "cli/deployments",
+        "cli/stop"
       ]
     },
     {
@@ -91,18 +94,13 @@
         "components/separator"
       ]
     },
-      {
+    {
       "group": "Layout",
-      "pages": [
-        "layout/guide"
-      ]
+      "pages": ["layout/guide"]
     },
     {
       "group": "Usage",
-      "pages": [
-        "usage/examples",
-        "usage/troubleshooting"
-      ]
+      "pages": ["usage/examples", "usage/troubleshooting"]
     }
   ],
   "footerSocials": {
