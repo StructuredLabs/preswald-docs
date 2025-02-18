@@ -31,7 +31,7 @@
   },
   "tabs": [
     {
-      "name": "Components Reference",
+      "name": "SDK Reference",
       "url": "components"
     }
   ],
@@ -80,18 +80,23 @@
       ]
     },
     {
-      "group": "Components Reference",
+      "group": "UI Components",
       "pages": [
+        "components/plotly",
+        "components/selectbox",
+        "components/separator",
+        "components/slider",
         "components/text",
         "components/view",
-        "components/plotly",
-        "components/slider",
-        "components/selectbox",
-        "components/workflow_dag",
-        "components/workflow",
-        "components/workflow_analyzer",
+        "components/workflow_dag"
+      ]
+    },
+    {
+      "group": "Workflow",
+      "pages": [
         "components/retrypolicy",
-        "components/separator"
+        "components/workflow",
+        "components/workflow_analyzer"
       ]
     },
     {

@@ -1,18 +1,19 @@
 ---
-title: "Workflow DAG"
+title: "workflow_dag"
 icon: "diagram-project"
 description: ""
 ---
 
-# `workflow_dag(workflow, title="Workflow Dependency Graph")`
+```python
+workflow_dag(workflow: preswald.Workflow, title="Workflow Dependency Graph")
+```
 
 The `workflow_dag` function renders a Directed Acyclic Graph (DAG) visualization for a given workflow. This helps you visualize dependencies and relationships within the workflow, making it easier to understand and debug complex processes.
 
 ## Parameters
 
 - **`workflow`**: A workflow object representing the process or pipeline to be visualized.
-- **`title`** _(str, optional)_: The title displayed above the visualization. Defaults to `"Workflow Dependency Graph"`.
-- **`size`** _(float)_: _(Optional)_ The width of the component in a row. Defaults to `1.0` (full row). See the [Layout Guide](/layout/guide) for details.
+- **`title`** _(str)_: _(Optional)_ The title displayed above the visualization. Defaults to `"Workflow Dependency Graph"`.
 
 ## Returns
 

@@ -1,21 +1,34 @@
 ---
-title: "Slider"
+title: "slider"
 icon: "sliders"
 description: ""
 ---
 
-# `slider(label: str, min_val: int, max_val: int, step: int, default: int)`
+```python
+slider(
+    label: str,
+    min_val: float = 0.0,
+    max_val: float = 100.0,
+    step: float = 1.0,
+    default: Optional[float] = None,
+    size: float = 1.0,
+) -> float:
+```
 
 The `slider` function adds an interactive slider to your app, enabling users to input numerical values within a specified range. This is especially useful for dynamic controls, such as selecting a range or adjusting parameters.
 
 ## Parameters
 
 - **`label`** _(str)_: The label displayed next to the slider, indicating its purpose.
-- **`min_val`** _(int)_: The minimum value the slider can take.
-- **`max_val`** _(int)_: The maximum value the slider can take.
+- **`min_val`** _(float)_: The minimum value the slider can take.
+- **`max_val`** _(float)_: The maximum value the slider can take.
 - **`step`** _(int)_: The step size between values on the slider.
-- **`default`** _(int)_: The initial/default value of the slider.
+- **`default`** _(float)_: _(Optional)_ The initial/default value of the slider.
 - **`size`** _(float)_: _(Optional)_ The width of the component in a row. Defaults to `1.0` (full row). See the [Layout Guide](/layout/guide) for details.
+
+## Returns
+
+- `float` containing the current value.
 
 ## Usage Example
 
