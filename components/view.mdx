@@ -1,10 +1,12 @@
 ---
-title: "View"
+title: "view"
 icon: "table"
 description: ""
 ---
 
-# `view(df, limit: int = None)`
+```python
+view(df, limit: int = None)
+```
 
 The `view` function provides an easy way to display a dataset as a table or visualization, making it simple to explore and understand your data.
 
@@ -12,7 +14,10 @@ The `view` function provides an easy way to display a dataset as a table or visu
 
 - **`df`** _(Pandas DataFrame)_: The dataset you want to display. This must be a Pandas DataFrame.
 - **`limit`** _(int, optional)_: The maximum number of rows to display. If not specified, the entire dataset will be displayed (depending on the environment).
-- **`size`** _(float)_: _(Optional)_ The width of the component in a row. Defaults to `1.0` (full row). See the [Layout Guide](/layout/guide) for details.
+
+## Returns
+
+- `Dict` containing the full `view` component metadata and data.
 
 ## Usage Example
 

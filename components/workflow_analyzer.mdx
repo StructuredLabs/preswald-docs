@@ -1,10 +1,12 @@
 ---
-title: "Workflow Analyzer"
+title: "WorkflowAnalyzer"
 icon: "microscope"
 description: ""
 ---
 
-# `WorkflowAnalyzer()`
+```python
+class WorkflowAnalyzer
+```
 
 The `WorkflowAnalyzer` class provides tools to analyze and optimize workflows built using the `Workflow` class. It offers insights into critical paths, parallel execution opportunities, and dependency visualizations, enabling you to fine-tune workflows for efficiency.
 
@@ -17,9 +19,31 @@ The `WorkflowAnalyzer` class provides tools to analyze and optimize workflows bu
 
 ---
 
-## Methods
+## Functions
 
-### `analyzer.get_critical_path()`
+```python
+def __init__(self, workflow):
+```
+
+You need to pass in a `preswald.Workflow` object to the `WorkflowAnalyzer`.
+
+---
+
+```python
+def build_graph(self) -> nx.DiGraph:
+```
+
+Constructs a NetworkX graph representation of the workflow. Includes rich metadata for visualization and analysis. You can call this, but this is most often used internally by `get_critical_path`
+
+#### Returns:
+
+- **`graph`** _(nx.DiGraph)_: a NetworkX graph representation of the workflow.
+
+---
+
+```python
+def get_critical_path(self) -> List[str]:
+```
 
 Identifies the critical path in the workflow. The critical path represents the sequence of dependent atoms that determines the total execution time.
 
@@ -29,17 +53,25 @@ Identifies the critical path in the workflow. The critical path represents the s
 
 ---
 
-### `analyzer.get_parallel_groups()`
+```python
+def get_parallel_groups(self) -> List[Set[str]]:
+```
 
 Identifies groups of atoms that can be computed in parallel, helping you optimize execution.
 
 #### Returns:
 
-- **`parallel_groups`** _(list of lists)_: Each sublist contains atom names that can be computed simultaneously.
+- **`parallel_groups`** _(list of sets)_: Each subset contains atom names that can be computed simultaneously.
 
 ---
 
-### `analyzer.visualize(highlight_path=None, title="Workflow Dependency Graph")`
+```python
+def visualize(
+        self,
+        highlight_path: Optional[List[str]] = None,
+        title: str = "Workflow Dependency Graph",
+    ):
+```
 
 Generates a DAG (Directed Acyclic Graph) visualization of the workflow.
 

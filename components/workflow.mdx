@@ -4,7 +4,9 @@ icon: "square-steam"
 description: ""
 ---
 
-# `Workflow()`
+```python
+class Workflow
+```
 
 The `Workflow` class provides a framework for building stateful workflows with selective recomputation and intelligent caching. This is particularly useful for tasks like data loading, cleaning, and analysis, where intermediate results can be cached to avoid unnecessary re-execution.
 
@@ -30,9 +32,16 @@ Atoms are individual, reusable units of computation. These are functions decorat
 
 ---
 
-## Workflow Methods
+## Functions
 
-### `workflow.atom()`
+```python
+def atom(
+        self,
+        dependencies: Optional[List[str]] = None,
+        retry_policy: Optional[RetryPolicy] = None,
+        force_recompute: bool = False,
+    ):
+```
 
 A decorator used to define an atom (a node in the workflow).
 
@@ -40,14 +49,19 @@ A decorator used to define an atom (a node in the workflow).
 
 - **`dependencies`** _(list, optional)_: Names of other atoms this atom depends on.
 - **`RetryPolicy`** _(optional)_: Specify a retry policy for this atom. If not provided, the default retry policy is used.
+- **`force_recompute`** _(bool, optional)_: Whether to force computation of this atom even if it is unchanged.
 
 ---
 
-### `workflow.execute()`
+```python
+def execute(
+        self, recompute_atoms: Optional[Set[str]] = None
+    ) -> Dict[str, AtomResult]:
+```
 
 Executes all atoms in the workflow, respecting dependencies and caching.
 
-#### Arguments:
+#### Parameters:
 
 - **`recompute_atoms`** _(set, optional)_: Names of atoms to force recomputation, bypassing the cache.
 
