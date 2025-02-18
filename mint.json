@@ -32,7 +32,7 @@
   "tabs": [
     {
       "name": "SDK Reference",
-      "url": "components"
+      "url": "sdk"
     }
   ],
   "anchors": [
@@ -80,27 +80,35 @@
       ]
     },
     {
-      "group": "UI Components",
+      "group": "ui",
       "pages": [
-        "components/alert",
-        "components/checkbox",
-        "components/plotly",
-        "components/progress",
-        "components/selectbox",
-        "components/separator",
-        "components/slider",
-        "components/text",
-        "components/text_input",
-        "components/view",
-        "components/workflow_dag"
+        "sdk/alert",
+        "sdk/checkbox",
+        "sdk/plotly",
+        "sdk/progress",
+        "sdk/selectbox",
+        "sdk/separator",
+        "sdk/slider",
+        "sdk/text",
+        "sdk/text_input",
+        "sdk/view",
+        "sdk/workflow_dag"
       ]
     },
     {
-      "group": "Workflow",
+      "group": "data",
       "pages": [
-        "components/retrypolicy",
-        "components/workflow",
-        "components/workflow_analyzer"
+        "sdk/connect",
+        "sdk/get_df",
+        "sdk/query"
+      ]
+    },
+    {
+      "group": "workflow",
+      "pages": [
+        "sdk/retrypolicy",
+        "sdk/workflow",
+        "sdk/workflow_analyzer"
       ]
     },
     {
