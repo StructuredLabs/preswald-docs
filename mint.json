@@ -89,9 +89,9 @@
         "sdk/selectbox",
         "sdk/separator",
         "sdk/slider",
+        "sdk/table",
         "sdk/text",
         "sdk/text_input",
-        "sdk/view",
         "sdk/workflow_dag"
       ]
     },
