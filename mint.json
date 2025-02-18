@@ -82,11 +82,15 @@
     {
       "group": "UI Components",
       "pages": [
+        "components/alert",
+        "components/checkbox",
         "components/plotly",
+        "components/progress",
         "components/selectbox",
         "components/separator",
         "components/slider",
         "components/text",
+        "components/text_input",
         "components/view",
         "components/workflow_dag"
       ]
