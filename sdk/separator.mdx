@@ -5,10 +5,10 @@ description: ""
 ---
 
 ```python
-separator()
+separator() -> Dict
 ```
 
-The `separator` function is a simple component that adds a visual break (new line) in your app. It’s useful for organizing content or separating different sections for better readability.
+The `separator` function is a layout control component that forces a new row in your app's layout. It's essential for organizing content and creating clear visual breaks between different sections of your application.
 
 ## Parameters
 
@@ -20,16 +20,24 @@ This component **takes no parameters**.
 
 ## Usage Example
 
-Here’s how to use the `separator` function:
+Here's how to use the `separator` function:
 
 ```python
-from preswald import separator
+from preswald import separator, text, button
 
-# Add a separator to break content
-print("Section 1 Content")
+# Create components that will be on the same row
+text("Left content", size=0.5)
+text("Right content", size=0.5)
+
+# Force a new row with separator
 separator()
-print("Section 2 Content")
+
+# These components will be on a new row
+button("Button 1", size=0.3)
+button("Button 2", size=0.3)
+button("Button 3", size=0.3)
 ```
 
+### Key Features
 - **Clean Layout**: Adds a clear visual break to structure your app's content.
 - **Simple to Use**: No configuration needed—just call the function.
